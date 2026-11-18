@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arian Rahman | Full-Stack Developer & UI/UX Designer</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind Custom Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            navy: {
+              950: '#050814',
+              900: '#0a0f1f',
+              800: '#111936',
+              700: '#1b264f',
+            },
+            neon: {
+              blue: '#00d4ff',
+              glow: '#38bdf8',
+              indigo: '#3b82f6',
+            },
+          },
+          boxShadow: {
+            'neon': '0 0 20px rgba(0, 212, 255, 0.25)',
+            'neon-strong': '0 0 30px rgba(0, 212, 255, 0.45)',
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    /* Custom subtle background grid & scrollbar */
+    body {
+      background-color: #050814;
+      color: #e2e8f0;
+    }
+
+    .bg-grid-pattern {
+      background-image: linear-gradient(to right, rgba(56, 189, 248, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(56, 189, 248, 0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #050814;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1b264f;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #00d4ff;
+    }
+  </style>
+</head>
+<body class="font-sans antialiased selection:bg-neon-blue/30 selection:text-neon-blue relative overflow-x-hidden">
+
+  <!-- Ambient Neon Glows -->
+  <div class="pointer-events-none fixed inset-0 overflow-hidden z-0">
+    <div class="absolute -top-40 -left-40 h-96 w-96 rounded-full bg-neon-blue/10 blur-[120px]"></div>
+    <div class="absolute top-1/2 -right-40 h-96 w-96 rounded-full bg-blue-600/10 blur-[140px]"></div>
+  </div>
+
+  <!-- ================= NAVBAR ================= -->
+  <header class="sticky top-0 z-50 border-b border-slate-800/70 bg-navy-950/80 backdrop-blur-xl">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+      <!-- EDIT HERE: Your Brand / Logo -->
+      <a href="#hero" class="group flex items-center gap-2 text-lg font-bold tracking-tight text-white">
+        <span class="flex h-9 w-9 items-center justify-center rounded-lg border border-neon-blue/40 bg-neon-blue/10 font-mono text-sm text-neon-blue transition group-hover:shadow-neon">
+          &lt;/&gt;
+        </span>
+        <span>Arian<span class="text-neon-blue">.dev</span></span>
+      </a>
+
+      <!-- Desktop Menu -->
+      <nav class="hidden items-center gap-8 text-sm font-medium text-slate-300 md:flex">
+        <a href="#skills" class="transition hover:text-neon-blue">Skills</a>
+        <a href="#experience" class="transition hover:text-neon-blue">Experience</a>
+        <a href="#projects" class="transition hover:text-neon-blue">Projects</a>
+        <a href="#testimonials" class="transition hover:text-neon-blue">Testimonials</a>
+        <a
+          href="#contact"
+          class="rounded-lg border border-neon-blue/50 bg-neon-blue/10 px-4 py-2 text-neon-blue transition hover:bg-neon-blue hover:text-navy-950 hover:shadow-neon"
+        >
+          Contact Me
+        </a>
+      </nav>
+
+      <!-- Mobile Menu Toggle -->
+      <button
+        id="mobile-menu-btn"
+        aria-label="Toggle Menu"
+        class="rounded-lg border border-slate-800 p-2 text-slate-300 hover:border-neon-blue/50 hover:text-neon-blue md:hidden"
+      >
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden border-t border-slate-800/70 bg-navy-900/95 px-6 py-4 md:hidden">
+      <div class="flex flex-col gap-4 text-sm font-medium text-slate-300">
+        <a href="#skills" class="mobile-link hover:text-neon-blue">Skills</a>
+        <a href="#experience" class="mobile-link hover:text-neon-blue">Experience</a>
+        <a href="#projects" class="mobile-link hover:text-neon-blue">Projects</a>
+        <a href="#testimonials" class="mobile-link hover:text-neon-blue">Testimonials</a>
+        <a href="#contact" class="mobile-link font-semibold text-neon-blue">Contact Me</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative z-10 bg-grid-pattern">
+
+    <!-- ================= 1. HERO SECTION ================= -->
+    <section id="hero" class="mx-auto max-w-6xl px-6 py-20 md:py-28">
+      <div class="grid items-center gap-12 lg:grid-cols-12">
+        <!-- Left Content -->
+        <div class="lg:col-span-7">
+          <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-neon-blue/30 bg-neon-blue/10 px-4 py-1.5 text-xs font-medium text-neon-blue">
+            <span class="relative flex h-2 w-2">
+              <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-neon-blue opacity-75"></span>
+              <span class="relative inline-flex h-2 w-2 rounded-full bg-neon-blue"></span>
+            </span>
+            Available for Freelance & Full-Time Roles
+          </div>
+
+          <!-- EDIT HERE: Your Name & Title -->
+          <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
+            Hi, I'm <span class="bg-gradient-to-r from-neon-blue via-sky-300 to-blue-500 bg-clip-text text-transparent">Arian Rahman</span>
+          </h1>
+          <h2 class="mt-3 text-xl font-semibold text-slate-300 sm:text-2xl">
+            Full-Stack Web Developer &amp; UI/UX Designer
+          </h2>
+
+          <!-- EDIT HERE: Your Bio -->
+          <p class="mt-6 max-w-2xl text-base leading-relaxed text-slate-400 sm:text-lg">
+            I architect scalable web applications and craft intuitive digital experiences. Bridging the gap between clean backend engineering and pixel-perfect frontend interfaces with modern web technologies.
+          </p>
+
+          <!-- Action Buttons -->
+          <div class="mt-8 flex flex-wrap items-center gap-4">
+            <a
+              href="#projects"
+              class="inline-flex items-center gap-2 rounded-xl bg-neon-blue px-6 py-3.5 text-sm font-bold text-navy-950 shadow-neon transition duration-300 hover:-translate-y-0.5 hover:bg-sky-300 hover:shadow-neon-strong"
+            >
+              Explore Projects
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+            <a
+              href="#contact"
+              class="inline-flex items-center gap-2 rounded-xl border border-slate-700 bg-navy-900/80 px-6 py-3.5 text-sm font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:border-neon-blue/60 hover:text-neon-blue"
+            >
+              Get in Touch
+            </a>
+          </div>
+
+          <!-- Quick Stats -->
+          <div class="mt-12 flex flex-wrap gap-8 border-t border-slate-800/80 pt-8">
+            <div>
+              <p class="text-2xl font-bold text-white">5+</p>
+              <p class="text-xs uppercase tracking-wider text-slate-400">Years Experience</p>
+            </div>
+            <div>
+              <p class="text-2xl font-bold text-white">40+</p>
+              <p class="text-xs uppercase tracking-wider text-slate-400">Projects Delivered</p>
+            </div>
+            <div>
+              <p class="text-2xl font-bold text-white">99%</p>
+              <p class="text-xs uppercase tracking-wider text-slate-400">Client Satisfaction</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Content: Professional Headshot Space -->
+        <div class="flex justify-center lg:col-span-5 lg:justify-end">
+          <div class="relative group">
+            <!-- Glowing background frame -->
+            <div class="absolute -inset-1 rounded-3xl bg-gradient-to-tr from-neon-blue via-blue-600 to-cyan-400 opacity-35 blur-lg transition duration-500 group-hover:opacity-65"></div>
+
+            <!-- Headshot Container -->
+            <div class="relative h-80 w-72 overflow-hidden rounded-3xl border border-slate-700/80 bg-navy-900 p-2 sm:h-96 sm:w-80">
+              <!-- EDIT HERE: Replace the SVG/div below with your <img src="your-photo.jpg" alt="Your Name" class="h-full w-full rounded-2xl object-cover" /> -->
+              <div class="flex h-full w-full flex-col items-center justify-center rounded-2xl bg-gradient-to-b from-navy-800 to-navy-950 text-center">
+                <svg class="h-32 w-32 text-neon-blue/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span class="mt-3 font-mono text-xs text-slate-400">Your Headshot Here</span>
+              </div>
+
+              <!-- Floating Badge -->
+              <div class="absolute bottom-5 left-5 right-5 rounded-xl border border-slate-700/80 bg-navy-950/90 px-4 py-3 backdrop-blur-md">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <p class="text-xs font-semibold text-white">Currently Building</p>
+                    <p class="font-mono text-[11px] text-neon-blue">Cloud &amp; AI SaaS Products</p>
+                  </div>
+                  <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-neon-blue/15 text-neon-blue">
+                    ⚡
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 2. TECH STACK & SKILLS ================= -->
+    <section id="skills" class="mx-auto max-w-6xl px-6 py-20">
+      <div class="mb-12">
+        <p class="font-mono text-xs font-semibold uppercase tracking-widest text-neon-blue">01. Arsenal</p>
+        <h2 class="mt-2 text-3xl font-bold text-white sm:text-4xl">Tech Stack &amp; Skills</h2>
+        <p class="mt-3 max-w-xl text-slate-400">
+          Technologies and design tools I use to turn complex ideas into fast, reliable products.
+        </p>
+      </div>
+
+      <!-- EDIT HERE: Add or modify your skills -->
+      <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+        <!-- Skill Badge -->
+        <div class="group flex flex-col items-center justify-center gap-3 rounded-2xl border border-slate-800/80 bg-navy-900/60 p-6 transition duration-300 hover:-translate-y-1 hover:border-neon-blue/50 hover:bg-navy-800/70 hover:shadow-neon">
+          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-sky-500/10 text-sky-400 transition group-hover:scale-110">
+            <span class="font-mono text-lg font-bold">Re</span>
+          </div>
+          <span class="text-sm font-semibold text-slate-200">React / Next.js</span>
+        </div>
+
+        <div class="group flex flex-col items-center justify-center gap-3 rounded-2xl border border-slate-800/80 bg-navy-900/60 p-6 transition duration-300 hover:-translate-y-1 hover:border-neon-blue/50 hover:bg-navy-800/70 hover:shadow-neon">
+          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-500/10 text-blue-400 transition group-hover:scale-110">
+            <span class="font-mono text-lg font-bold">TS</span>
+          </div>
+          <span class="text-sm font-semibold text-slate-200">TypeScript</span>
+        </div>
+
+        <div class="group flex flex-col items-center justify-center gap-3 rounded-2xl border border-slate-800/80 bg-navy-900/60 p-6 transition duration-300 hover:-translate-y-1 hover:border-neon-blue/50 hover:bg-navy-800/70 hover:shadow-neon">
+          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400 transition group-hover:scale-110">
+            <span class="font-mono text-lg font-bold">TW</span>
+          </div>
+          <span class="text-sm font-semibold text-slate-200">Tailwind CSS</span>
+        </div>
+
+        <div class="group flex flex-col items-center justify-center gap-3 rounded-2xl border border-slate-800/80 bg-navy-900/60 p-6 transition duration-300 hover:-translate-y-1 hover:border-neon-blue/50 hover:bg-navy-800/70 hover:shadow-neon">
+          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-400 transition group-hover:scale-110">
+            <span class="font-mono text-lg font-bold">No</span>
+          </div>
+          <span class="text-sm font-semibold text-slate-200">Node.js</span>
+        </div>
+
+        <div class="group flex flex-col items-center justify-center gap-3 rounded-2xl border border-slate-800/80 bg-navy-900/60 p-6 transition duration-300 hover:-translate-y-1 hover:border-neon-blue/50 hover:bg-navy-800/70 hover:shadow-neon">
+          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-500/10 text-indigo-400 transition group-hover:scale-110">
+            <span class="font-mono text-lg font-bold">PG</span>
+          </div>
+          <span class="text-sm font-semibold text-slate-200">PostgreSQL</span>
+        </div>
+
+        <div class="group flex flex-col items-center justify-center gap-3 rounded-2xl border border-slate-800/80 bg-navy-900/60 p-6 transition duration-300 hover:-translate-y-1 hover:border-neon-blue/50 hover:bg-navy-800/70 hover:shadow-neon">
+          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-purple-500/10 text-purple-400 transition group-hover:scale-110">
+            <span class="font-mono text-lg font-bold">Fg</span>
+          </div>
+          <span class="text-sm font-semibold text-slate-200">Figma UI/UX</span>
+        </div>
+
+        <div class="group flex flex-col items-center justify-center gap-3 rounded-2xl border border-slate-800/80 bg-navy-900/60 p-6 transition duration-300 hover:-translate-y-1 hover:border-neon-blue/50 hover:bg-navy-800/70 hover:shadow-neon">
+          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-amber-500/10 text-amber-400 transition group-hover:scale-110">
+            <span class="font-mono text-lg font-bold">Py</span>
+          </div>
+          <span class="text-sm font-semibold text-slate-200">Python / FastAPI</span>
+        </div>
+
+        <div class="group flex flex-col items-center justify-center gap-3 rounded-2xl border border-slate-800/80 bg-navy-900/60 p-6 transition duration-300 hover:-translate-y-1 hover:border-neon-blue/50 hover:bg-navy-800/70 hover:shadow-neon">
+          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-sky-500/10 text-sky-300 transition group-hover:scale-110">
+            <span class="font-mono text-lg font-bold">Dk</span>
+          </div>
+          <span class="text-sm font-semibold text-slate-200">Docker</span>
+        </div>
+
+        <div class="group flex flex-col items-center justify-center gap-3 rounded-2xl border border-slate-800/80 bg-navy-900/60 p-6 transition duration-300 hover:-translate-y-1 hover:border-neon-blue/50 hover:bg-navy-800/70 hover:shadow-neon">
+          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-orange-500/10 text-orange-400 transition group-hover:scale-110">
+            <span class="font-mono text-lg font-bold">AWS</span>
+          </div>
+          <span class="text-sm font-semibold text-slate-200">AWS Cloud</span>
+        </div>
+
+        <div class="group flex flex-col items-center justify-center gap-3 rounded-2xl border border-slate-800/80 bg-navy-900/60 p-6 transition duration-300 hover:-translate-y-1 hover:border-neon-blue/50 hover:bg-navy-800/70 hover:shadow-neon">
+          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-pink-500/10 text-pink-400 transition group-hover:scale-110">
+            <span class="font-mono text-lg font-bold">GQL</span>
+          </div>
+          <span class="text-sm font-semibold text-slate-200">GraphQL</span>
+        </div>
+
+        <div class="group flex flex-col items-center justify-center gap-3 rounded-2xl border border-slate-800/80 bg-navy-900/60 p-6 transition duration-300 hover:-translate-y-1 hover:border-neon-blue/50 hover:bg-navy-800/70 hover:shadow-neon">
+          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-teal-500/10 text-teal-400 transition group-hover:scale-110">
+            <span class="font-mono text-lg font-bold">PR</span>
+          </div>
+          <span class="text-sm font-semibold text-slate-200">Prisma ORM</span>
+        </div>
+
+        <div class="group flex flex-col items-center justify-center gap-3 rounded-2xl border border-slate-800/80 bg-navy-900/60 p-6 transition duration-300 hover:-translate-y-1 hover:border-neon-blue/50 hover:bg-navy-800/70 hover:shadow-neon">
+          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-slate-500/10 text-slate-300 transition group-hover:scale-110">
+            <span class="font-mono text-lg font-bold">Git</span>
+          </div>
+          <span class="text-sm font-semibold text-slate-200">Git &amp; CI/CD</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 3. PROFESSIONAL JOURNEY / TIMELINE ================= -->
+    <section id="experience" class="mx-auto max-w-6xl px-6 py-20">
+      <div class="mb-12">
+        <p class="font-mono text-xs font-semibold uppercase tracking-widest text-neon-blue">02. Career Path</p>
+        <h2 class="mt-2 text-3xl font-bold text-white sm:text-4xl">Professional Journey</h2>
+        <p class="mt-3 max-w-xl text-slate-400">
+          My work history building high-impact products across startups and enterprise teams.
+        </p>
+      </div>
+
+      <!-- EDIT HERE: Your Work Experience Timeline -->
+      <div class="relative ml-3 border-l border-slate-800 pl-8 space-y-10">
+        <!-- Item 1 -->
+        <div class="relative group">
+          <span class="absolute -left-[41px] top-1.5 flex h-5 w-5 items-center justify-center rounded-full border-2 border-neon-blue bg-navy-950 shadow-neon transition group-hover:scale-110">
+            <span class="h-2 w-2 rounded-full bg-neon-blue"></span>
+          </span>
+          <div class="rounded-2xl border border-slate-800/80 bg-navy-900/60 p-6 transition duration-300 hover:border-neon-blue/40">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <h3 class="text-xl font-bold text-white">Senior Full-Stack Engineer</h3>
+              <span class="rounded-full border border-neon-blue/30 bg-neon-blue/10 px-3 py-1 font-mono text-xs text-neon-blue">
+                2024 — Present
+              </span>
+            </div>
+            <p class="mt-1 text-sm font-medium text-sky-400">NovaCloud Technologies</p>
+            <p class="mt-3 text-sm leading-relaxed text-slate-400">
+              Leading frontend &amp; API architecture for a multi-tenant SaaS analytics platform serving 120k+ monthly active users. Reduced page load latency by 42% using Next.js App Router and edge caching.
+            </p>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="relative group">
+          <span class="absolute -left-[41px] top-1.5 flex h-5 w-5 items-center justify-center rounded-full border-2 border-slate-700 bg-navy-950 transition group-hover:border-neon-blue">
+            <span class="h-2 w-2 rounded-full bg-slate-500 group-hover:bg-neon-blue"></span>
+          </span>
+          <div class="rounded-2xl border border-slate-800/80 bg-navy-900/60 p-6 transition duration-300 hover:border-neon-blue/40">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <h3 class="text-xl font-bold text-white">Full-Stack Developer &amp; UI Lead</h3>
+              <span class="rounded-full border border-slate-700 bg-navy-800 px-3 py-1 font-mono text-xs text-slate-300">
+                2022 — 2024
+              </span>
+            </div>
+            <p class="mt-1 text-sm font-medium text-sky-400">PixelForge Studio</p>
+            <p class="mt-3 text-sm leading-relaxed text-slate-400">
+              Designed unified component libraries in Figma and implemented scalable Node.js/React applications for fintech and e-commerce clients across Europe and North America.
+            </p>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="relative group">
+          <span class="absolute -left-[41px] top-1.5 flex h-5 w-5 items-center justify-center rounded-full border-2 border-slate-700 bg-navy-950 transition group-hover:border-neon-blue">
+            <span class="h-2 w-2 rounded-full bg-slate-500 group-hover:bg-neon-blue"></span>
+          </span>
+          <div class="rounded-2xl border border-slate-800/80 bg-navy-900/60 p-6 transition duration-300 hover:border-neon-blue/40">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <h3 class="text-xl font-bold text-white">Frontend Developer</h3>
+              <span class="rounded-full border border-slate-700 bg-navy-800 px-3 py-1 font-mono text-xs text-slate-300">
+                2020 — 2022
+              </span>
+            </div>
+            <p class="mt-1 text-sm font-medium text-sky-400">ByteCraft Solutions</p>
+            <p class="mt-3 text-sm leading-relaxed text-slate-400">
+              Built responsive dashboards, interactive data visualizations, and accessible web portals using React, Tailwind CSS, and RESTful APIs.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 4. FEATURED PROJECTS ================= -->
+    <section id="projects" class="mx-auto max-w-6xl px-6 py-20">
+      <div class="mb-12">
+        <p class="font-mono text-xs font-semibold uppercase tracking-widest text-neon-blue">03. Selected Work</p>
+        <h2 class="mt-2 text-3xl font-bold text-white sm:text-4xl">Featured Projects</h2>
+        <p class="mt-3 max-w-xl text-slate-400">
+          A curated showcase of full-stack applications and UI systems I have engineered.
+        </p>
+      </div>
+
+      <!-- EDIT HERE: Replace with your 3 real projects -->
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <!-- Project Card 1 -->
+        <article class="group flex flex-col overflow-hidden rounded-2xl border border-slate-800/80 bg-navy-900/70 transition duration-300 hover:-translate-y-2 hover:border-neon-blue/50 hover:shadow-neon">
+          <!-- Mock Preview Visual -->
+          <div class="relative h-48 overflow-hidden bg-gradient-to-br from-navy-800 via-navy-900 to-sky-950 p-4">
+            <div class="flex h-full w-full flex-col justify-between rounded-xl border border-slate-700/60 bg-navy-950/90 p-3 shadow-inner transition duration-500 group-hover:scale-[1.03]">
+              <div class="flex items-center gap-1.5">
+                <span class="h-2.5 w-2.5 rounded-full bg-rose-500/80"></span>
+                <span class="h-2.5 w-2.5 rounded-full bg-amber-400/80"></span>
+                <span class="h-2.5 w-2.5 rounded-full bg-emerald-400/80"></span>
+                <span class="ml-2 h-2 w-24 rounded bg-slate-800"></span>
+              </div>
+              <div class="grid grid-cols-3 gap-2">
+                <div class="col-span-2 h-16 rounded-lg bg-gradient-to-r from-neon-blue/20 to-blue-600/20 border border-neon-blue/20"></div>
+                <div class="h-16 rounded-lg bg-navy-800"></div>
+              </div>
+              <div class="flex gap-2">
+                <div class="h-4 w-1/3 rounded bg-slate-800"></div>
+                <div class="h-4 w-1/2 rounded bg-neon-blue/20"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-1 flex-col p-6">
+            <h3 class="text-xl font-bold text-white transition group-hover:text-neon-blue">
+              PulseAI Analytics SaaS
+            </h3>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-slate-400">
+              Real-time revenue intelligence dashboard with predictive churn modeling, custom SQL query builder, and dark-first UI.
+            </p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="rounded-md bg-navy-800 px-2.5 py-1 font-mono text-xs text-neon-blue">Next.js</span>
+              <span class="rounded-md bg-navy-800 px-2.5 py-1 font-mono text-xs text-sky-300">TypeScript</span>
+              <span class="rounded-md bg-navy-800 px-2.5 py-1 font-mono text-xs text-slate-300">PostgreSQL</span>
+            </div>
+            <div class="mt-6 flex items-center gap-4 border-t border-slate-800/80 pt-4 text-sm font-semibold">
+              <a href="#" class="inline-flex items-center gap-1.5 text-neon-blue hover:underline">
+                Live Demo
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+              <a href="#" class="text-slate-400 hover:text-white">Source Code</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project Card 2 -->
+        <article class="group flex flex-col overflow-hidden rounded-2xl border border-slate-800/80 bg-navy-900/70 transition duration-300 hover:-translate-y-2 hover:border-neon-blue/50 hover:shadow-neon">
+          <!-- Mock Preview Visual -->
+          <div class="relative h-48 overflow-hidden bg-gradient-to-br from-navy-800 via-indigo-950 to-navy-900 p-4">
+            <div class="flex h-full w-full flex-col justify-between rounded-xl border border-slate-700/60 bg-navy-950/90 p-3 shadow-inner transition duration-500 group-hover:scale-[1.03]">
+              <div class="flex items-center justify-between">
+                <span class="h-3 w-16 rounded bg-neon-blue/30"></span>
+                <span class="h-3 w-10 rounded bg-slate-800"></span>
+              </div>
+              <div class="space-y-2">
+                <div class="h-5 w-3/4 rounded bg-slate-800"></div>
+                <div class="h-5 w-full rounded bg-blue-500/20 border border-blue-400/20"></div>
+                <div class="h-5 w-2/3 rounded bg-slate-800"></div>
+              </div>
+              <div class="flex justify-end">
+                <span class="h-5 w-16 rounded-md bg-neon-blue/30"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-1 flex-col p-6">
+            <h3 class="text-xl font-bold text-white transition group-hover:text-neon-blue">
+              FinFlow Payment Gateway
+            </h3>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-slate-400">
+              Developer-first checkout API and merchant portal supporting multi-currency invoicing, webhook logs, and instant payouts.
+            </p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="rounded-md bg-navy-800 px-2.5 py-1 font-mono text-xs text-neon-blue">React</span>
+              <span class="rounded-md bg-navy-800 px-2.5 py-1 font-mono text-xs text-sky-300">Node.js</span>
+              <span class="rounded-md bg-navy-800 px-2.5 py-1 font-mono text-xs text-slate-300">Stripe API</span>
+            </div>
+            <div class="mt-6 flex items-center gap-4 border-t border-slate-800/80 pt-4 text-sm font-semibold">
+              <a href="#" class="inline-flex items-center gap-1.5 text-neon-blue hover:underline">
+                Live Demo
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+              <a href="#" class="text-slate-400 hover:text-white">Source Code</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project Card 3 -->
+        <article class="group flex flex-col overflow-hidden rounded-2xl border border-slate-800/80 bg-navy-900/70 transition duration-300 hover:-translate-y-2 hover:border-neon-blue/50 hover:shadow-neon">
+          <!-- Mock Preview Visual -->
+          <div class="relative h-48 overflow-hidden bg-gradient-to-br from-cyan-950 via-navy-900 to-navy-800 p-4">
+            <div class="flex h-full w-full flex-col justify-between rounded-xl border border-slate-700/60 bg-navy-950/90 p-3 shadow-inner transition duration-500 group-hover:scale-[1.03]">
+              <div class="grid grid-cols-4 gap-2 h-full">
+                <div class="col-span-1 rounded-lg bg-navy-800/90 p-2 space-y-2">
+                  <div class="h-2 w-full rounded bg-neon-blue/40"></div>
+                  <div class="h-2 w-3/4 rounded bg-slate-700"></div>
+                  <div class="h-2 w-5/6 rounded bg-slate-700"></div>
+                </div>
+                <div class="col-span-3 rounded-lg bg-navy-900 p-2 flex flex-col justify-between border border-slate-800">
+                  <div class="h-14 rounded bg-gradient-to-r from-cyan-500/20 to-neon-blue/10"></div>
+                  <div class="grid grid-cols-2 gap-2">
+                    <div class="h-8 rounded bg-slate-800"></div>
+                    <div class="h-8 rounded bg-slate-800"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-1 flex-col p-6">
+            <h3 class="text-xl font-bold text-white transition group-hover:text-neon-blue">
+              DevSync Workspace
+            </h3>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-slate-400">
+              Collaborative sprint tracker and live markdown documentation hub powered by WebSockets and role-based access control.
+            </p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="rounded-md bg-navy-800 px-2.5 py-1 font-mono text-xs text-neon-blue">Tailwind</span>
+              <span class="rounded-md bg-navy-800 px-2.5 py-1 font-mono text-xs text-sky-300">FastAPI</span>
+              <span class="rounded-md bg-navy-800 px-2.5 py-1 font-mono text-xs text-slate-300">Redis</span>
+            </div>
+            <div class="mt-6 flex items-center gap-4 border-t border-slate-800/80 pt-4 text-sm font-semibold">
+              <a href="#" class="inline-flex items-center gap-1.5 text-neon-blue hover:underline">
+                Live Demo
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+              <a href="#" class="text-slate-400 hover:text-white">Source Code</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================= 5. CLIENT TESTIMONIALS ================= -->
+    <section id="testimonials" class="mx-auto max-w-6xl px-6 py-20">
+      <div class="mb-12 flex flex-wrap items-end justify-between gap-6">
+        <div>
+          <p class="font-mono text-xs font-semibold uppercase tracking-widest text-neon-blue">04. Social Proof</p>
+          <h2 class="mt-2 text-3xl font-bold text-white sm:text-4xl">Client Testimonials</h2>
+        </div>
+
+        <!-- Carousel Controls -->
+        <div class="flex items-center gap-3">
+          <button
+            id="prev-testimonial"
+            aria-label="Previous Testimonial"
+            class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-700 bg-navy-900 text-slate-300 transition hover:border-neon-blue hover:text-neon-blue"
+          >
+            &larr;
+          </button>
+          <button
+            id="next-testimonial"
+            aria-label="Next Testimonial"
+            class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-700 bg-navy-900 text-slate-300 transition hover:border-neon-blue hover:text-neon-blue"
+          >
+            &rarr;
+          </button>
+        </div>
+      </div>
+
+      <!-- Carousel Container -->
+      <div class="relative overflow-hidden rounded-3xl border border-slate-800/80 bg-navy-900/70 p-8 sm:p-12">
+        <div id="testimonial-track" class="transition-opacity duration-300">
+          <!-- Populated dynamically via JS for smooth carousel switching -->
+        </div>
+
+        <!-- Dots -->
+        <div id="testimonial-dots" class="mt-8 flex items-center gap-2"></div>
+      </div>
+    </section>
+
+    <!-- ================= 6. CONTACT SECTION ================= -->
+    <section id="contact" class="mx-auto max-w-6xl px-6 py-20">
+      <div class="mb-12">
+        <p class="font-mono text-xs font-semibold uppercase tracking-widest text-neon-blue">05. Get in Touch</p>
+        <h2 class="mt-2 text-3xl font-bold text-white sm:text-4xl">Let's Build Something Great</h2>
+        <p class="mt-3 max-w-xl text-slate-400">
+          Have a project in mind or looking for a dedicated full-stack engineer? Send me a message and I'll reply within 24 hours.
+        </p>
+      </div>
+
+      <div class="grid gap-10 lg:grid-cols-12">
+        <!-- Direct Contact Details -->
+        <div class="space-y-6 lg:col-span-5">
+          <div class="rounded-2xl border border-slate-800/80 bg-navy-900/60 p-6">
+            <h3 class="text-lg font-bold text-white">Direct Contact</h3>
+            <p class="mt-2 text-sm text-slate-400">
+              Prefer email or social channels? Reach out directly anytime.
+            </p>
+
+            <!-- EDIT HERE: Your Contact Information -->
+            <div class="mt-6 space-y-4 text-sm">
+              <a href="mailto:hello@arianrahman.dev" class="flex items-center gap-3 text-slate-300 transition hover:text-neon-blue">
+                <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-neon-blue/10 text-neon-blue">
+                  ✉
+                </span>
+                <div>
+                  <p class="text-xs text-slate-400">Email</p>
+                  <p class="font-medium">hello@arianrahman.dev</p>
+                </div>
+              </a>
+
+              <div class="flex items-center gap-3 text-slate-300">
+                <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-neon-blue/10 text-neon-blue">
+                  📍
+                </span>
+                <div>
+                  <p class="text-xs text-slate-400">Location</p>
+                  <p class="font-medium">Dhaka, Bangladesh (Remote Worldwide)</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Social Links -->
+            <div class="mt-8 border-t border-slate-800/80 pt-6">
+              <p class="mb-3 text-xs font-semibold uppercase tracking-wider text-slate-400">Connect</p>
+              <div class="flex gap-3">
+                <a href="#" class="rounded-xl border border-slate-700 bg-navy-950 px-4 py-2 text-xs font-semibold text-slate-300 transition hover:border-neon-blue hover:text-neon-blue">
+                  GitHub
+                </a>
+                <a href="#" class="rounded-xl border border-slate-700 bg-navy-950 px-4 py-2 text-xs font-semibold text-slate-300 transition hover:border-neon-blue hover:text-neon-blue">
+                  LinkedIn
+                </a>
+                <a href="#" class="rounded-xl border border-slate-700 bg-navy-950 px-4 py-2 text-xs font-semibold text-slate-300 transition hover:border-neon-blue hover:text-neon-blue">
+                  X / Twitter
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="lg:col-span-7">
+          <form id="contact-form" class="rounded-2xl border border-slate-800/80 bg-navy-900/60 p-6 sm:p-8 space-y-5">
+            <div class="grid gap-5 sm:grid-cols-2">
+              <div>
+                <label for="name" class="mb-2 block text-xs font-semibold uppercase tracking-wider text-slate-300">
+                  Your Name
+                </label>
+                <input
+                  id="name"
+                  type="text"
+                  required
+                  placeholder="John Doe"
+                  class="w-full rounded-xl border border-slate-700/80 bg-navy-950 px-4 py-3 text-sm text-white placeholder-slate-500 outline-none transition focus:border-neon-blue focus:ring-1 focus:ring-neon-blue"
+                />
+              </div>
+              <div>
+                <label for="email" class="mb-2 block text-xs font-semibold uppercase tracking-wider text-slate-300">
+                  Email Address
+                </label>
+                <input
+                  id="email"
+                  type="email"
+                  required
+                  placeholder="john@company.com"
+                  class="w-full rounded-xl border border-slate-700/80 bg-navy-950 px-4 py-3 text-sm text-white placeholder-slate-500 outline-none transition focus:border-neon-blue focus:ring-1 focus:ring-neon-blue"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label for="message" class="mb-2 block text-xs font-semibold uppercase tracking-wider text-slate-300">
+                Message
+              </label>
+              <textarea
+                id="message"
+                rows="5"
+                required
+                placeholder="Tell me about your project, timeline, and goals..."
+                class="w-full rounded-xl border border-slate-700/80 bg-navy-950 px-4 py-3 text-sm text-white placeholder-slate-500 outline-none transition focus:border-neon-blue focus:ring-1 focus:ring-neon-blue"
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              id="submit-btn"
+              class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-neon-blue px-6 py-3.5 text-sm font-bold text-navy-950 shadow-neon transition hover:bg-sky-300 hover:shadow-neon-strong sm:w-auto"
+            >
+              Send Message
+              <span>&rarr;</span>
+            </button>
+
+            <!-- Success Message -->
+            <div id="form-status" class="hidden rounded-xl border border-emerald-500/40 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-300">
+              ✅ Thank you! Your message has been sent successfully. I'll get back to you soon.
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="border-t border-slate-800/80 bg-navy-950 py-8">
+    <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 text-sm text-slate-400 sm:flex-row">
+      <p>&copy; <span id="year"></span> Arian Rahman. Crafted with Tailwind CSS.</p>
+      <a href="#hero" class="font-mono text-xs text-neon-blue hover:underline">Back to Top &uarr;</a>
+    </div>
+  </footer>
+
+  <!-- ================= JAVASCRIPT ================= -->
+  <script>
+    // Dynamic Copyright Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile Menu Toggle
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    mobileLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // EDIT HERE: Client Testimonials Data
+    const testimonials = [
+      {
+        quote:
+          '“Working with Arian transformed our product. He rebuilt our entire SaaS dashboard ahead of schedule, cutting load times in half while elevating the UI to an enterprise level.”',
+        name: 'Sarah Jenkins',
+        role: 'VP of Product, MetricFlow (USA)',
+        initials: 'SJ',
+      },
+      {
+        quote:
+          '“Rarely do you find a developer who understands both deep backend architecture and refined UI/UX design. Every sprint was transparent, fast, and bug-free.”',
+        name: 'Marcus Vance',
+        role: 'Founder & CEO, FinVault (UK)',
+        initials: 'MV',
+      },
+      {
+        quote:
+          '“Our conversion rate jumped by 34% within the first month after launching the new web app Arian designed and engineered for us.”',
+        name: 'Nadia Karim',
+        role: 'Head of Growth, ShopSphere',
+        initials: 'NK',
+      },
+    ];
+
+    let currentSlide = 0;
+    const track = document.getElementById('testimonial-track');
+    const dotsContainer = document.getElementById('testimonial-dots');
+
+    function renderTestimonial(index) {
+      const item = testimonials[index];
+      track.style.opacity = 0;
+
+      setTimeout(() => {
+        track.innerHTML = `
+          <div class="max-w-3xl">
+            <div class="mb-6 flex gap-1 text-neon-blue text-lg">★★★★★</div>
+            <blockquote class="text-lg font-medium leading-relaxed text-slate-200 sm:text-2xl">
+              ${item.quote}
+            </blockquote>
+            <div class="mt-8 flex items-center gap-4">
+              <div class="flex h-12 w-12 items-center justify-center rounded-full border border-neon-blue/40 bg-neon-blue/10 font-mono text-sm font-bold text-neon-blue">
+                ${item.initials}
+              </div>
+              <div>
+                <p class="font-bold text-white">${item.name}</p>
+                <p class="text-sm text-slate-400">${item.role}</p>
+              </div>
+            </div>
+          </div>
+        `;
+        track.style.opacity = 1;
+      }, 150);
+
+      // Update Dots
+      dotsContainer.innerHTML = testimonials
+        .map(
+          (_, idx) => `
+          <button
+            onclick="goToSlide(${idx})"
+            aria-label="Go to testimonial ${idx + 1}"
+            class="h-2 rounded-full transition-all ${
+              idx === index ? 'w-8 bg-neon-blue' : 'w-2 bg-slate-700 hover:bg-slate-500'
+            }"
+          ></button>
+        `
+        )
+        .join('');
+    }
+
+    function goToSlide(index) {
+      currentSlide = index;
+      renderTestimonial(currentSlide);
+    }
+
+    document.getElementById('prev-testimonial').addEventListener('click', () => {
+      currentSlide = (currentSlide - 1 + testimonials.length) % testimonials.length;
+      renderTestimonial(currentSlide);
+    });
+
+    document.getElementById('next-testimonial').addEventListener('click', () => {
+      currentSlide = (currentSlide + 1) % testimonials.length;
+      renderTestimonial(currentSlide);
+    });
+
+    renderTestimonial(0);
+
+    // Contact Form Submission Handler (Demo Mode)
+    const contactForm = document.getElementById('contact-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const formStatus = document.getElementById('form-status');
+
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
+      setTimeout(() => {
+        contactForm.reset();
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Send Message <span>&rarr;</span>';
+        formStatus.classList.remove('hidden');
+
+        setTimeout(() => {
+          formStatus.classList.add('hidden');
+        }, 5000);
+      }, 800);
+    });
+  </script>
+</body>
+</html>
